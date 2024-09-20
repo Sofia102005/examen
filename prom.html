@@ -1,21 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulario Promedio</title>
 </head>
 <body>
-    <form name="tabla", id="estudiantes"> 
+    <form name="tabla", id="registro"> 
         <div>
             <label>codigo: </label>
             <input type="text" name="codigoInp" required>
             <div id="codigoError"> </div>
         </div>
-        <div> 
-            <label>nombre: </label>
-            <input type="text" name="nombreInp" required>
-        </div> 
         <div> 
             <label>nombre: </label>
             <input type="text" name="nombreInp" required>
@@ -41,7 +37,7 @@
         </div>
     </form>
     <table border="1">
-        <tr>
+        <tr id="estudiantes">
             <tr>
                 <th> </th>
                 <th>Codigo</th>
