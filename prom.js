@@ -1,27 +1,25 @@
-/*definicion de variables*/
+/* definición de variables */
 const codigoError = document.getElementById("codigoError");
 const listaEstudiantes = document.getElementById('listaEstudiantes');
+const formEstudiante = document.getElementById('formEstudiante');
 
-
-/*definicion metodos */ 
+/* definición métodos */
 const promEstudiante = (nota1, nota2, nota3, nota4) => {
-    return{
-    nota1: parseFloat (nota1),
-    nota2: parseFloat (nota2),
-    nota3: parseFloat (nota3),
-    nota4: parseFloat (nota4),
-    calProm: function() {
-        return (((this.nota1*0.2)+(this.nota2*0.2) +(this.nota3*0.2)+ (this.nota4*0.4))/4)
-    },
-    aprob: function() {
-        return this.calcularDef() >= 3.0 ? "Aprobado" : "No aprobo";
-    }
-    }
-}
+    return {
+        nota1: parseFloat(nota1),
+        nota2: parseFloat(nota2),
+        nota3: parseFloat(nota3),
+        nota4: parseFloat(nota4),
+        calProm: function() {
+            return ((this.nota1 * 0.2) + (this.nota2 * 0.2) + (this.nota3 * 0.2) + (this.nota4 * 0.4));
+        },
+        aprob: function() {
+            return this.calProm() >= 3.0 ? "Aprobado" : "No aprobó";
+        }
+    };
+};
 
-
-const cargarRegistro = (estudiante)=>{
-
+const cargarRegistro = (estudiante) => {
     const row = document.createElement('tr');
     
     const nombreCeld = document.createElement('td');
@@ -48,8 +46,7 @@ const cargarRegistro = (estudiante)=>{
     eliminarBtn.addEventListener('click', () => {
         row.remove();
     });
-    btnCeld.appendChild(eleminiarBtn);
-
+    btnCeld.appendChild(eliminarBtn);
 
     row.appendChild(nombreCeld);
     row.appendChild(codigoCeld);
@@ -61,4 +58,22 @@ const cargarRegistro = (estudiante)=>{
 
     const tbody = listaEstudiantes.getElementsByTagName('tbody')[0];
     tbody.appendChild(row);
-}
+};
+
+formEstudiante.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const nombre = document.getElementById('nombre').value;
+    const codigo = document.getElementById('codigo').value;
+    const nota1 = document.getElementById('nota1').value;
+    const nota2 = document.getElementById('nota2').value;
+    const nota3 = document.getElementById('nota3').value;
+    const nota4 = document.getElementById('nota4').value;
+
+    const estudiante = promEstudiante(nota1, nota2, nota3, nota4);
+    estudiante.nombre = nombre;
+    estudiante.codigo = codigo;
+
+    cargarRegistro(estudiante);   
+
+    formEstudiante.reset();
+});

@@ -3,44 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="prom.css">
     <title>Formulario Promedio</title>
 </head>
 <body>
-    <form name="tabla", id="registro"> 
-        <div>
-            <label>codigo: </label>
-            <input type="text" name="codigoInp" required>
-            <div id="msg"> </div>
-        </div>
-        <div> 
-            <label>nombre: </label>
-            <input type="text" name="nombreInp" required>
-        </div> 
-        <div>
-            <label>20% :</label>
-            <input type="text" name="nota1">
-        </div>
-        <div>
-            <label>20%:</label>
-            <input type="text" name="nota2">
-        </div>
-        <div>
-            <label>20%:</label>
-            <input type="text" name="nota3">
-        </div>
-        <div>
-            <label>40% :</label>
-            <input type="text" name="nota4">
-        </div>
-        <div>
-            <button type="submit">Guardar</button>
-        </div>
-    </form>
-    <table border="1">
-        <tr id="estudiantes">
+    <table border="1" id="listaEstudiantes">
+        <thead>
             <tr>
                 <th> </th>
-                <th>Codigo</th>
+                <th>Código</th>
                 <th>Nombre</th>
                 <th>20%</th>
                 <th>20%</th>
@@ -48,12 +19,43 @@
                 <th>40%</th>
                 <th>Definitiva</th>
                 <th>A/No</th>
-              </tr>   
-            </thead>
-            <tbody>
-            </tbody>
-         </table>
+            </tr>   
+        </thead>
+        <tbody>
+        </tbody>
     </table>
+
+    <form id="formEstudiante"> 
+        <div>
+            <label>Código: </label>
+            <input type="text" id="codigo" required>
+            <div id="msg"></div>
+        </div>
+        <div> 
+            <label>Nombre: </label>
+            <input type="text" id="nombre" required>
+        </div> 
+        <div>
+            <label>20%:</label>
+            <input type="text" id="nota1">
+        </div>
+        <div>
+            <label>20%:</label>
+            <input type="text" id="nota2">
+        </div>
+        <div>
+            <label>20%:</label>
+            <input type="text" id="nota3">
+        </div>
+        <div>
+            <label>40%:</label>
+            <input type="text" id="nota4">
+        </div>
+        <div>
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+    
     <script src="prom.js"></script>
 </body>
 </html>
