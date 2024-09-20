@@ -1,10 +1,59 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
+    display: flex; 
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
     background-color: #f9f9f9;
+}
+
+.cuadrado {
+    width: 100px;
+    height: 100px;
+    background-color: #ff0000;
+    border-radius: 16px;
+    cursor: pointer;
+    transition-property: background, width;
+    transition-duration: 2s, 1s;
+    transition-delay: 2s;
+    transition-timing-function: ease;
+}
+
+.cuadrado:hover {
+    background-color: #0000ff;
+    box-shadow: 14px 6px 17px 0px rgba(0, 0, 0, 0.5);
+    transition-delay: 0s;
+    width: 200px;
+}
+
+.anime {
+    position: fixed;
+    background-color: #8a2be2;
+    top: 0;
+    left: 0;
+    animation-name: prueba;
+    animation-duration: 4s; /* Duración de la animación ajustada a 4 segundos */
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    animation-direction: alternate;
+    animation-timing-function: ease-out;
+}
+
+@keyframes prueba {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    50% {
+        background-color: #ff0000;
+        border-radius: 50%;
+        width: 500px;
+        height: 500px;
+    }
+    100% {
+        top: calc(100vh - 100px);
+        left: calc(100vw - 100px);
+    }
 }
 
 .container {
@@ -14,18 +63,16 @@ body {
     max-width: 1200px; 
 }
 
-fieldset {
-    border: 2px solid #ddd;
-    padding: 10px;
-    margin-bottom: 20px;
-    flex: 1; 
-    margin-right: 40px;
+table {
+    width: 60%; 
+    border-collapse: collapse;
+    margin-right: 40px; 
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 35%; 
 }
 
 form div {
@@ -53,12 +100,6 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #daa3c7;
-}
-
-table {
-    width: 60%; 
-    border-collapse: collapse;
-    margin-left: 40px; 
 }
 
 th, td {

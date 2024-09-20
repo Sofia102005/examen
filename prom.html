@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="prom.css">
     <title>Formulario Promedio</title>
+    <link rel="stylesheet" href="prom.css">
 </head>
 <body>
-    <table border="1" id="listaEstudiantes">
+    <div class="cuadrado anime"></div> 
+
+    <table border="1">
         <thead>
-            <tr>
-                <th> </th>
-                <th>Código</th>
+            <tr id="estudiantes">
+                <th></th>
+                <th>Codigo</th>
                 <th>Nombre</th>
                 <th>20%</th>
                 <th>20%</th>
@@ -25,37 +27,37 @@
         </tbody>
     </table>
 
-    <form id="formEstudiante"> 
+    <form name="tabla" id="registro"> 
         <div>
-            <label>Código: </label>
-            <input type="text" id="codigo" required>
+            <label>Codigo: </label>
+            <input type="text" name="codigoInp" required>
             <div id="msg"></div>
         </div>
         <div> 
             <label>Nombre: </label>
-            <input type="text" id="nombre" required>
+            <input type="text" name="nombreInp" required>
         </div> 
         <div>
-            <label>20%:</label>
-            <input type="text" id="nota1">
+            <label>20% :</label>
+            <input type="text" name="nota1">
         </div>
         <div>
             <label>20%:</label>
-            <input type="text" id="nota2">
+            <input type="text" name="nota2">
         </div>
         <div>
             <label>20%:</label>
-            <input type="text" id="nota3">
+            <input type="text" name="nota3">
         </div>
         <div>
-            <label>40%:</label>
-            <input type="text" id="nota4">
+            <label>40% :</label>
+            <input type="text" name="nota4">
         </div>
         <div>
             <button type="submit">Guardar</button>
         </div>
     </form>
-    
+
     <script src="prom.js"></script>
 </body>
 </html>
