@@ -1,6 +1,6 @@
-// Selección de elementos del DOM
 const formEstudiante = document.getElementById('registro');
 const msgCodigo = document.getElementById("msgCodigo");
+const estudiantes = []; 
 
 /* Definición de métodos */
 const promEstudiante = (nota1, nota2, nota3, nota4) => {
@@ -18,7 +18,15 @@ const promEstudiante = (nota1, nota2, nota3, nota4) => {
     };
 };
 
-// Función para cargar el estudiante en la tabla
+const codigoValidator = {
+    comprobarCodigo: function(codigo) {
+        return estudiantes.some(est => est.codigo === codigo);
+    },
+    mostrarMensaje: function(mensaje) {
+        msgCodigo.textContent = mensaje;
+    }
+};
+
 const cargarRegistro = (estudiante) => {
     const row = document.createElement('tr');
     
@@ -41,20 +49,24 @@ const cargarRegistro = (estudiante) => {
     nota4Celd.textContent = estudiante.nota4;
 
     const defCeld = document.createElement('td');
-    defCeld.textContent = estudiante.calProm().toFixed(2); // Promedio calculado
+    defCeld.textContent = estudiante.calProm().toFixed(2);
 
     const aprobCeld = document.createElement('td');
-    aprobCeld.textContent = estudiante.aprob(); // Estado aprobado/no aprobado
+    aprobCeld.textContent = estudiante.aprob(); 
 
     const btnCeld = document.createElement('td');
     const eliminarBtn = document.createElement('button');
     eliminarBtn.textContent = 'Borrar';
     eliminarBtn.addEventListener('click', () => {
-        row.remove(); // Elimina la fila cuando se hace clic en "Borrar"
+        row.remove(); 
+ 
+        const index = estudiantes.indexOf(estudiante);
+        if (index > -1) {
+            estudiantes.splice(index, 1);
+        }
     });
     btnCeld.appendChild(eliminarBtn);
 
-    // Agregar las celdas a la fila
     row.appendChild(codigoCeld);
     row.appendChild(nombreCeld);
     row.appendChild(nota1Celd);
@@ -65,14 +77,12 @@ const cargarRegistro = (estudiante) => {
     row.appendChild(aprobCeld);
     row.appendChild(btnCeld);
 
-    // Insertar la fila en la tabla
     const tbody = document.querySelector('tbody');
     tbody.appendChild(row);
 };
 
-/* Manejo del evento submit */
 formEstudiante.addEventListener('submit', (event) => {
-    event.preventDefault();  // Evita el comportamiento por defecto del formulario
+    event.preventDefault(); 
 
     const codigo = document.getElementById('codigo').value;
     const nombre = document.getElementById('nombre').value;
@@ -81,22 +91,22 @@ formEstudiante.addEventListener('submit', (event) => {
     const nota3 = document.getElementById('nota3').value;
     const nota4 = document.getElementById('nota4').value;
 
-    // Verificación básica de longitud del código
     if (codigo.length > 10) {
         msgCodigo.textContent = "El código debe tener máximo 10 caracteres.";
-        return;  // Detiene el procesamiento si el código no es válido
+        return;  
+    } else if (codigoValidator.comprobarCodigo(codigo)) {
+        codigoValidator.mostrarMensaje("El código ya existe en la tabla.");
+        return;
     } else {
-        msgCodigo.textContent = "";  // Limpia el mensaje de error si es válido
+        msgCodigo.textContent = "";  
     }
 
-    // Creación del objeto estudiante
     const estudiante = promEstudiante(nota1, nota2, nota3, nota4);
     estudiante.codigo = codigo;
     estudiante.nombre = nombre;
 
-    // Cargar el registro en la tabla
+    estudiantes.push(estudiante); 
     cargarRegistro(estudiante);
 
-    // Limpiar el formulario
     formEstudiante.reset();
 });
