@@ -1,61 +1,57 @@
+/* Estilo global */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex; 
     justify-content: center;
     align-items: flex-start;
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding: 40px;
+    background-color: #f0f4f7;
+    margin: 0;
 }
 
 .cuadrado {
     width: 100px;
     height: 100px;
-    background-color: #ff0000;
+    background-color: #ff6b6b;
     border-radius: 16px;
     cursor: pointer;
-    transition-property: background, width;
-    transition-duration: 2s, 1s;
-    transition-delay: 2s;
-    transition-timing-function: ease;
+    transition: background 0.5s ease, width 0.5s ease;
+    margin-bottom: 20px;
 }
 
 .cuadrado:hover {
-    background-color: #0000ff;
-    box-shadow: 14px 6px 17px 0px rgba(0, 0, 0, 0.5);
-    transition-delay: 0s;
+    background-color: #4e54c8;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     width: 200px;
 }
 
+/* Animación: Cuadrado moviéndose horizontalmente en la parte inferior */
 .anime {
     position: fixed;
-    background-color: #8a2be2;
-    top: 0;
+    bottom: 0;
     left: 0;
-    animation-name: prueba;
-    animation-duration: 4s; /* Duración de la animación ajustada a 4 segundos */
+    background-color: #8e44ad;
+    animation-name: moverHorizontal;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
-    animation-delay: 1s;
     animation-direction: alternate;
-    animation-timing-function: ease-out;
 }
 
-@keyframes prueba {
+@keyframes moverHorizontal {
     0% {
-        top: 0;
         left: 0;
     }
     50% {
-        background-color: #ff0000;
-        border-radius: 50%;
-        width: 500px;
-        height: 500px;
+        background-color: #ff6b6b;
+        width: 200px;
+        height: 100px;
     }
     100% {
-        top: calc(100vh - 100px);
-        left: calc(100vw - 100px);
+        left: calc(100vw - 200px);
     }
 }
 
+/* Contenedor de tabla y formulario */
 .container {
     display: flex;
     justify-content: space-between;
@@ -63,55 +59,105 @@ body {
     max-width: 1200px; 
 }
 
+/* Estilos de la tabla */
 table {
     width: 60%; 
     border-collapse: collapse;
-    margin-right: 40px; 
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    width: 35%; 
-}
-
-form div {
-    margin-bottom: 10px;
-}
-
-label {
-    display: inline-block;
-    width: 100px;
-}
-
-input[type="text"] {
-    padding: 5px;
-    width: calc(100% - 120px);
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #daa3c7;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-right: 40px;
+    overflow: hidden;
 }
 
 th, td {
-    padding: 10px;
+    padding: 15px;
     text-align: left;
     border: 1px solid #ddd;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #4e54c8;
+    color: white;
 }
 
 thead th {
     font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Estilos del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: inline-block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #4e54c8;
+}
+
+/* Botón de enviar */
+button[type="submit"] {
+    padding: 12px;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #3b40a0;
+}
+
+#msg {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Elimina la responsividad */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    width: 60%;
+}
+
+form {
+    width: 35%;
 }

@@ -7,51 +7,53 @@
     <link rel="stylesheet" href="prom.css">
 </head>
 <body>
-    <div class="cuadrado anime"></div> 
+    <h1>Registro de Estudiantes</h1>
 
+    <!-- Tabla donde se mostrarán los estudiantes registrados -->
     <table border="1">
         <thead>
-            <tr id="estudiantes">
-                <th></th>
-                <th>Codigo</th>
+            <tr>
+                <th>Código</th>
                 <th>Nombre</th>
-                <th>20%</th>
-                <th>20%</th>
-                <th>20%</th>
-                <th>40%</th>
+                <th>Nota 1 (20%)</th>
+                <th>Nota 2 (20%)</th>
+                <th>Nota 3 (20%)</th>
+                <th>Nota 4 (40%)</th>
                 <th>Definitiva</th>
-                <th>A/No</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>   
         </thead>
         <tbody>
         </tbody>
     </table>
 
-    <form name="tabla" id="registro"> 
+    <!-- Formulario de ingreso de estudiantes -->
+    <form id="registro">
         <div>
-            <label>Codigo: </label>
-            <input type="text" name="codigoInp" required>
-            <div id="msg"></div>
+            <label>Código: </label>
+            <input type="text" name="codigoInp" id="codigo" required>
+            <div id="msgCodigo"></div>
         </div>
         <div> 
             <label>Nombre: </label>
-            <input type="text" name="nombreInp" required>
+            <input type="text" name="nombreInp" id="nombre" required>
         </div> 
         <div>
-            <label>20% :</label>
-            <input type="text" name="nota1">
+            <label>Nota 1 (20%):</label>
+            <input type="number" name="nota1Inp" id="nota1" min="0" max="5" step="0.1" required>
         </div>
         <div>
-            <label>20%:</label>
-            <input type="text" name="nota2">
+            <label>Nota 2 (20%):</label>
+            <input type="number" name="nota2Inp" id="nota2" min="0" max="5" step="0.1" required>
         </div>
         <div>
-            <label>20%:</label>
-            <input type="text" name="nota3">
+            <label>Nota 3 (20%):</label>
+            <input type="number" name="nota3Inp" id="nota3" min="0" max="5" step="0.1" required>
         </div>
         <div>
-            <label>40% :</label>
-            <input type="text" name="nota4">
+            <label>Nota 4 (40%):</label>
+            <input type="number" name="nota4Inp" id="nota4" min="0" max="5" step="0.1" required>
         </div>
         <div>
             <button type="submit">Guardar</button>
