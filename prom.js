@@ -1,8 +1,7 @@
 const formEstudiante = document.getElementById('registro');
-const msgCodigo = document.getElementById("msgCodigo");
+const msgError = document.getElementById("msgError");
 const estudiantes = []; 
 
-/* Definición de métodos */
 const promEstudiante = (nota1, nota2, nota3, nota4) => {
     return {
         nota1: parseFloat(nota1),
@@ -22,9 +21,6 @@ const codigoValidator = {
     comprobarCodigo: function(codigo) {
         return estudiantes.some(est => est.codigo === codigo);
     },
-    mostrarMensaje: function(mensaje) {
-        msgCodigo.textContent = mensaje;
-    }
 };
 
 const cargarRegistro = (estudiante) => {
@@ -59,7 +55,7 @@ const cargarRegistro = (estudiante) => {
     eliminarBtn.textContent = 'Borrar';
     eliminarBtn.addEventListener('click', () => {
         row.remove(); 
- 
+
         const index = estudiantes.indexOf(estudiante);
         if (index > -1) {
             estudiantes.splice(index, 1);
@@ -91,14 +87,14 @@ formEstudiante.addEventListener('submit', (event) => {
     const nota3 = document.getElementById('nota3').value;
     const nota4 = document.getElementById('nota4').value;
 
+    msgError.textContent = ""; // Limpiar mensaje de error
+
     if (codigo.length > 10) {
-        msgCodigo.textContent = "El código debe tener máximo 10 caracteres.";
+        msgError.textContent = "El código debe tener un máximo de 10 caracteres.";
         return;  
     } else if (codigoValidator.comprobarCodigo(codigo)) {
-        codigoValidator.mostrarMensaje("El código ya existe en la tabla.");
+        msgError.textContent = "El código ya está registrado. Por favor, usa otro.";
         return;
-    } else {
-        msgCodigo.textContent = "";  
     }
 
     const estudiante = promEstudiante(nota1, nota2, nota3, nota4);
